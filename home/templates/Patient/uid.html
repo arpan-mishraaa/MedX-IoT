@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="ARPAN-MISHRA">
+  <title>Patient Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('{% static "core/assets/img1.jpg" %}') no-repeat center center/cover;
+      backdrop-filter: blur(4px);
+      min-height: 100vh;
+      color: #0056b3;
+      padding-top: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0056b3;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+    }
+
+    .navbar nav div {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    @media (max-width: 600px) {
+      .dashboard-container {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar nav div {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+  <style>
+    .container{
+        background-color: white;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        padding-top: 40px;
+        width: 55vw;
+    }
+    #navbtn{
+        color: black;
+    }
+    #submitbtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    #submitbtn > button{
+        color: white;
+        background-color: #0056b3;
+        padding: 10px;
+    }
+  </style>
+  <body>
+    <header>
+        <h1>
+            MedX
+        </h1>
+        <div class="navbar">
+          <nav>
+            <div>
+              <button><a id="navbtn" href="/pdash/">Dashboard</a></button>
+              <button><a id="navbtn" href="/pprofile/">Profile</a></button>
+            </div>
+          </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form method = "post">
+                {%csrf_token%}
+                {% if messages %} 
+                    {% for message in messages %}
+                        <div role="alert">{{ message }}</div>
+                    {% endfor %} 
+                {% endif %}
+                <label for="">Enter the card UID:</label>
+                <input name="uid" type="text">
+                <div id="submitbtn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

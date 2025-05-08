@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="ARPAN-MISHRA">
+  <title>Patient Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('{% static "core/assets/img1.jpg" %}') no-repeat center center/cover;
+      backdrop-filter: blur(4px);
+      min-height: 100vh;
+      color: #0056b3;
+      padding-top: 120px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0056b3;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+    }
+
+    .navbar nav div {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #0056b3;
+    }
+
+    .card p {
+      font-size: 16px;
+    }
+
+    .dash {
+      background-color: #0056b3;
+      display: flex;
+      justify-self: center;
+      color: white;
+      padding: 15px 40px;
+      font-size: 2rem;
+      font-weight: bold;
+      border-radius: 10px;
+      margin-top: 50px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    button a {
+      color: white;
+      text-decoration: none;
+    }
+
+    button {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #004494;
+    }
+    #manage{
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .dashboard-container {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar nav div {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MedX</h1>
+    <!-- <h3>Dashboard</h3> -->
+    <div class="navbar">
+      <nav>
+        <div>
+          <a href="/pprofile/">Profile</a>
+          <a href="/logout/" id="log_out">Log Out</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="dash">Patient's Dashboard</div>
+    <div class="dashboard-container">
+      <div class="card" id="meds">
+        <h3>Your Meds</h3>
+        <p>View and manage your medications.</p>
+        <button><a href="/pmeds/">Your Meds</a></button>
+      </div>
+      <div class="card" id="prescription">
+        <h3>Upload Your Prescription</h3>
+        <p>Upload prescriptions for future reference.</p>
+        <button><a href="/presc-upload/">Upload</a></button>
+      </div>  
+      <div class="card" id="appointment">
+        <h3>Schedule an Appointment</h3>
+        <p>Book an appointment with your doctor.</p>
+        <button><a href="/pappointment/">Schedule</a></button>
+      </div>
+      <div class="card" id="vitals">
+        <h3>Update Your Vitals</h3>
+        <p>Record and update your health vitals.</p>
+        <button><a href="/pvitals/">Update</a></button>
+      </div>
+      <div class="card">
+        <h3>Manage UIDs</h3>
+        <button id="manage"><a href="/pcard/">Manage</a></button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

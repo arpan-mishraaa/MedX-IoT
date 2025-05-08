@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="ARPAN-MISHRA" />
+  <title>Appointment</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('{% static "core/assets/img1.jpg" %}') no-repeat center center/cover;
+      height: 100vh;
+      backdrop-filter: blur(4px);      
+      padding-top: 130px;
+      color: #0056b3;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0056b3;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar button {
+      background-color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-weight: bold;
+    }
+
+    .navbar button a {
+      text-decoration: none;
+      color: #0056b3;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+    }
+
+    .appointment-form {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .appointment-form h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .appointment-form label {
+      font-weight: bold;
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    .appointment-form select,
+    .appointment-form input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .appointment-form button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .appointment-form button:hover {
+      background-color: #004494;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MedX</h1>
+    <div class="navbar">
+      <button><a href="/pdash/">Dashboard</a></button>
+      <button><a href="/pprofile/">Profile</a></button>
+    </div>
+  </header>
+
+  <main>
+    <form class="appointment-form" method = "post">
+      {%csrf_token%}
+      <h2>Book an Appointment</h2>
+      {% if messages %} 
+            {% for message in messages %}
+        <div role="alert">{{ message }}</div>
+            {% endfor %} 
+      {% endif %}
+      
+      <label for="appointment-date">Select Date:</label>
+      <input type="date" id="appointment-date" name="appointment-date" required>
+
+      <label for="hospital">Select Hospital:</label>
+      <select id="hospital" name="hospital" required>
+        <option value="">-- Choose Hospital --</option>
+        <option value="Kims">Kims</option>
+        <option value="Utkal">Utkal</option>
+        <option value="Care">Care</option>
+        <option value="Kalinga">Kalinga</option>
+        <option value="Apollo">Apollo</option>
+      </select>
+
+      <label for="department">Select Department:</label>
+      <select id="department" name="department" required>
+        <option value="">-- Choose Department --</option>
+        <option value="Neurology">Neurology</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Surgery">Surgery</option>
+        <option value="Gastroenterology">Gastroenterology</option>
+        <option value="Orthopedic">Orthopedic</option>
+        <option value="ENT">ENT</option>
+        <option value="Medicine">Medicine</option>
+      </select>
+
+      <button type="submit">Send a request for an Appointment</button>
+    </form>
+  </main>
+</body>
+</html>

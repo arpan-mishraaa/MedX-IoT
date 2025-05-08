@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="ARPAN-MISHRA" />
+  <title>Appointment Requests</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('{% static "core/assets/doc_img.png" %}') no-repeat center center/cover;
+      min-height: 100vh;
+      color: #0056b3;
+      margin: 0;
+      backdrop-filter: blur(5px);
+      padding-top: 100px; /* Enough space for fixed navbar */
+    }
+
+    .navbar {
+      background-color: #0056b3;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+    }
+
+    .navbar h2 {
+      margin: 0;
+      font-size: 3rem;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      background: white;
+      color: #0056b3;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .notification-box {
+      background: #fff;
+      border-left: 5px solid #0056b3;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .notification-box h3 {
+      margin: 0 0 10px 0;
+      color: #0056b3;
+    }
+
+    .notification-box p {
+      margin: 5px 0;
+    }
+
+    .actions {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .actions button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .approve {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .deny {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .reply-input {
+      flex: 1;
+      min-width: 250px;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .send-reply {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="navbar1" class="navbar">
+      <h2>MedX</h2>
+      <div class="nav-buttons">
+        <a href="/ddash/" class="nav-btn">Dashboard</a>
+        <a href="/dprofile/" class="nav-btn">Profile</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Example Appointment Request -->
+    <div class="notification-box">
+      <h3>Appointment Request</h3>
+      <p><strong>Patient:</strong> John Doe</p>
+      <p><strong>Requested Date:</strong> 14-April-2025</p>
+      <p><strong>Time:</strong> 10:30 AM</p>
+      <div class="actions">
+        <button class="approve">Approve</button>
+        <button class="deny">Deny</button>
+        <input type="text" class="reply-input" placeholder="Send a reply..." />
+        <button class="send-reply">Reply</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

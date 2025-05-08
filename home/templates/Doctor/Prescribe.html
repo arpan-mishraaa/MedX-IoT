@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="ARPAN-MISHRA">
+  <title>Prescription Form</title>
+  <style>
+    :root {
+      --primary-color: #0056b3;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('{% static "core/assets/doc_img.png" %}') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(5px);
+      color: #333;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .navbar nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .navbar button {
+      background: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .half-box {
+      display: flex;
+      gap: 10px;
+    }
+
+    .half-box input[type="text"] {
+      width: 100%;
+    }
+
+    .test-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .submit-btn {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      .half-box {
+        flex-direction: column;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MedX</h1>
+    <div class="navbar">
+      <nav>
+        <button><a href="/ddash/">Dashboard</a></button>
+        <button><a href="/dprofile/">Profile</a></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <form>
+      <!-- Patient ID -->
+      <div>
+        <label for="patientId">Patient-ID</label>
+        <input type="text" id="patientId" placeholder="Enter Patient ID">
+      </div>
+
+      <!-- Morning Meds -->
+      <div>
+        <label for="morningMeds">Morning Meds</label>
+        <input type="text" id="morningMeds" placeholder="Enter morning medicines">
+        <div class="half-box">
+          <input type="text" placeholder="Before Food">
+          <input type="text" placeholder="After Food">
+        </div>
+      </div>
+
+      <!-- Afternoon Meds -->
+      <div>
+        <label for="afternoonMeds">Afternoon Meds</label>
+        <input type="text" id="afternoonMeds" placeholder="Enter afternoon medicines">
+        <div class="half-box">
+          <input type="text" placeholder="Before Food">
+          <input type="text" placeholder="After Food">
+        </div>
+      </div>
+
+      <!-- Night/Dinner Meds -->
+      <div>
+        <label for="nightMeds">Night/Dinner Meds</label>
+        <input type="text" id="nightMeds" placeholder="Enter night medicines">
+        <div class="half-box">
+          <input type="text" placeholder="Before Food">
+          <input type="text" placeholder="After Food">
+        </div>
+      </div>
+
+      <!-- Recommended Exercises -->
+      <div>
+        <label for="exercises">Recommended Exercises</label>
+        <textarea id="exercises" rows="3" placeholder="Enter exercises to be followed"></textarea>
+      </div>
+
+      <!-- Checkboxes for Tests -->
+      <div>
+        <label>Recommended Tests</label>
+        <div class="test-group">
+          <input type="checkbox" id="bp"><label for="bp">Blood Pressure</label>
+          <input type="text" placeholder="test frequency">
+        </div>
+        <div class="test-group">
+          <input type="checkbox" id="sugar"><label for="sugar">Sugar</label>
+          <input type="text" placeholder="test frequency">
+        </div>
+        <div class="test-group">
+          <input type="checkbox" id="spo2"><label for="spo2">SpO2</label>
+          <input type="text" placeholder="test frequency">
+        </div>
+        <div class="test-group">
+          <input type="checkbox" id="temp"><label for="temp">Body Temperature</label>
+          <input type="text" placeholder="test frequency">
+        </div>
+        <div class="test-group">
+          <input type="checkbox" id="pulse"><label for="pulse">Pulse Rate</label>
+          <input type="text" placeholder="test frequency">
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </main>
+
+</body>
+</html>

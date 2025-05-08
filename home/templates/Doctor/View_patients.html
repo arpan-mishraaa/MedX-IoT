@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="ARPAN-MISHRA">
+  <title>View Patients</title>
+  <style>
+    :root {
+      --primary-color: #0056b3;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('{% static "core/assets/doc_img.png" %}') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(5px);
+      color: #333;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .navbar nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .navbar button {
+      background: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .search-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .search-bar input {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .search-bar button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .patient-info-box {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      margin-bottom: 20px;
+    }
+    button > a{
+        color: white;
+        text-decoration: none;
+    }
+
+    .report-btn {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar nav {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MedX</h1>
+    <div class="navbar">
+      <nav>
+        <button><a href="/ddash/">Dashboard</a></button>
+        <button><a href="/dprofile/">Profile</a></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="patientId" placeholder="Enter Patient-ID">
+      <button onclick="searchPatient()">Search</button>
+    </div>
+
+    <!-- Patient Info Box -->
+    <div class="patient-info-box" id="patientDetails">
+      <!-- This will be dynamically filled via Django backend -->
+      <p><strong>Patient Name:</strong> --</p>
+      <p><strong>Age:</strong> --</p>
+      <p><strong>Gender:</strong> --</p>
+      <p><strong>Phone:</strong> --</p>
+      <p><strong>Email:</strong> --</p>
+    </div>
+
+    <!-- View Report Button -->
+    <button class="report-btn"><a href="/dview/">View Patient's Report</a></button>
+
+  </main>
+
+  <script>
+    function searchPatient() {
+      const pid = document.getElementById("patientId").value;
+      // Connect this with Django using AJAX/fetch if needed
+      alert("Searching for Patient ID: " + pid);
+    }
+  </script>
+
+</body>
+</html>

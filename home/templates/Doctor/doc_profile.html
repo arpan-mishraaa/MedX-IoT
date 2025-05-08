@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <title>MedX-Doctor Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="ARPAN-MISHRA">
+  <style>
+    :root {
+      --primary-color: #0056b3;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('{% static "core/assets/doc_img.png" %}') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(5px);
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 15px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .navbar h2 {
+      margin: 0;
+      font-size: 3.5rem;
+    }
+
+    .navbar .nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .nav-buttons .nav-btn {
+      background: white;
+      color: var(--primary-color);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 30px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    .left-panel {
+      background-color: #f2fbfd;
+      flex: 1 1 300px;
+      padding: 30px;
+      text-align: center;
+      border-right: 1px solid #ccc;
+    }
+
+    .left-panel img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .left-panel input[type="file"] {
+      display: none;
+    }
+
+    .left-panel label,
+    .left-panel button {
+      display: block;
+      margin: 10px auto;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .right-panel {
+      flex: 2 1 400px;
+      padding: 30px;
+    }
+
+    .right-panel h3 {
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .update-btn {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .left-panel {
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar .nav-buttons {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h2>MedX</h2>
+    <div class="nav-buttons">
+      <a href="/ddash/" class="nav-btn">Dashboard</a>
+      <a href="/logout/" class="nav-btn">Log Out</a>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- Left Side - Profile Pic -->
+    <div class="left-panel">
+      <img src = '{% static "core/assets/default_pro_pic.jpg" %}' id="profilePic" alt="Profile Image">
+      <label for="uploadImage">Choose Image</label>
+      <input type="file" id="uploadImage" accept="image/*">
+      <button onclick="uploadImage()">Upload</button>
+    </div>
+
+    <!-- Right Side - Form -->
+    <div class="right-panel">
+      <h3>Update Doctor Details</h3>
+      <form>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter full name">
+        </div>
+        <div class="form-group">
+          <label for="number">Phone Number</label>
+          <input type="tel" id="number" placeholder="Enter contact number">
+        </div>
+        <div class="form-group">
+          <label for="email">Email ID</label>
+          <input type="email" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="license">License Number</label>
+          <input type="text" id="license" placeholder="Enter license number">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+          <label for="hospital">Hospital</label>
+          <input type="text" id="hospital" placeholder="Enter hospital name">
+        </div>
+        <div class="form-group">
+          <label for="department">Department</label>
+          <input type="text" id="department" placeholder="Enter department">
+        </div>
+        <button type="submit" class="update-btn">Update Details</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- JS for image preview -->
+  <script>
+    const fileInput = document.getElementById('uploadImage');
+    const profilePic = document.getElementById('profilePic');
+
+    fileInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          profilePic.setAttribute('src', reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function uploadImage() {
+      alert("Image uploaded successfully!");
+    }
+  </script>
+
+</body>
+</html>

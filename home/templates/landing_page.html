@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ARPAN-MISHRA">
+    <title>Welcome-to-MedX</title> 
+    <style>
+        /* 🌟 Background Image for Hospital Theme */
+body {
+    background: url('{% static "core/assets/img1.jpg" %}') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+/* Navbar Styling */
+nav {
+    background-color: #007BFF;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    flex-wrap: wrap;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #0056b3;
+    transition: 0.3s ease-in-out;
+}
+nav a:hover {
+    background-color: #004494;
+    transform: scale(1.05);
+}
+
+/* Container Styling */
+div {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Buttons Styling */
+a.btn-custom {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+a.btn-custom:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Styling for Sign Up and Log In Buttons inside the first div */
+.signup-login-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Adds space between buttons */
+    margin-top: 10px;
+}
+.signup-login-container a {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.signup-btn {
+    background-color: #007BFF;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+.signup-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+.login-btn {
+    background-color: #28a745; /* Green for login */
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+.login-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+.fancy-left-border {
+  border-left: 4px solid #000000; /* vegas-gold */
+  padding-left: 15px;
+  margin: 20px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000000; /* for dark bg */
+  background-color: rgba(255, 255, 255, 0.03); /* subtle highlight */
+  border-radius: 4px;
+}
+
+/* Responsive Image */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* 🔥 Smooth Fade-in Effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ❤️ Heartbeat Animation */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+.heartbeat {
+    animation: heartbeat 1.5s infinite;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #0056b3;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spec-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.spec-list .icon {
+  margin-right: 10px;
+  font-size: 20px;
+  line-height: 1.4;
+  min-width: 24px;
+}
+
+.spec-list .text {
+  line-height: 1.6;
+  color: #333;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    div {
+        width: 80%;
+    }
+    .signup-login-container {
+        flex-direction: column;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Medx : Your Smart Healthcare Solution</h1>
+            <a href="/login1/">Log In</a>
+            <a href="/register/">Sign Up</a>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <br>
+            <h2>Our Product</h2>
+            <p class = "fancy-left-border">MedX is a smart IoT-powered healthcare box designed specifically for patients who often forget to take their medicines, especially elderly individuals and those battling conditions like Alzheimer's. It features an intelligent reminder system, voice-based alerts, an interactive display showing the prescribed medication, and even an automatic medicine dispensing mechanism. What makes MedX even more powerful is its integration with personalized vital tracking — based on a doctor’s day-wise schedule, patients receive reminders to check specific vitals. They can then update their vitals directly on their dashboard, which are later visualized through detailed graphs for the doctor at month-end. With MedX, patients can manage their medications, vitals, and lab reports — all from one intuitive device, making healthcare accessible and hassle-free right at their fingertips.</p>
+            <a href="/Product_Buy.html"><img src="{% static 'core/assets/product_img.jpg' %}" alt="unable to load">            </a>
+            <p><h2>Product Specs : </h2>
+                <span>
+                    <ul class="spec-list">
+                        <li><span class="icon">🔔</span> <span class="text">Time-based and day-based alerts ensure patients never miss their medicines or vital checks — especially useful for Alzheimer’s and elderly users.</span></li>
+                        <li><span class="icon">💊</span> <span class="text">Precisely dispenses the right medicine at the right time, reducing manual dependency and dosage errors.</span></li>
+                        <li><span class="icon">🗣️</span> <span class="text">Integrated audio announcements and display screen notify users about which medicine to take and when.</span></li>
+                        <li><span class="icon">📊</span> <span class="text">Doctors can set daily vital check reminders via dashboard. Patients can update their readings which are auto-shared with doctors monthly via visual graphs.</span></li>
+                        <li><span class="icon">📁</span> <span class="text">Patients can manage medications, vital logs, and lab reports — all from a single smart device interface.</span></li>
+                      </ul>                      
+                </span>
+            </p>
+        </div>
+    </main>
+    <footer>
+        <p style="font-size: 8px;">
+            <h5>Project Guided By : Dr. Sudhansu Mohan Biswal</h5>
+            <h5>OUR TEAM : </h5>
+            <h6>
+                Subhojeet Biswas <br>
+                Ananya Mishra <br>
+                Sanandan Mohanty <br>
+                Arpan Mishra <br>
+            </h6>
+        </p>
+    </footer>
+</body>
+</html>
