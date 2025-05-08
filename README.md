@@ -28,5 +28,5 @@ MedX is a modern web application built to enhance healthcare experience and medi
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/medx.git
+   git clone https://github.com/arpan-mishraaa/MedX-IoT.git
    cd medx
